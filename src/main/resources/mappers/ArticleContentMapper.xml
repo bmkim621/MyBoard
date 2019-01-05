@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.board.dao.ArticleContentDao">
+	<insert id="insert" parameterType="ArticleContent">
+		insert into article_content(article_no, content) values (#{article_no}, #{content})
+	</insert>
+	
+	<select id="selectByNo" resultType="ArticleContent">
+		select * from article_content where article_no = #{article_no}
+	</select>
+	
+	<delete id="delete">
+		delete from article_content where article_no = #{article_no}
+	</delete>
+	
+	<update id="modify" parameterType="ArticleContent">
+		update article_content set content = #{content} where article_no = #{article_no}
+	</update>
+</mapper>

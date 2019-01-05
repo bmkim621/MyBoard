@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.board.dao.MemberDao">
+	<resultMap type="Member" id="result">
+		<id column="memberid" property="memberId" />
+		<result column="regdate" property="regDate"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="Member">
+		<!-- ?에는 model에 있는 Member에 있는 필드 이름과 일치해야 함. -->
+		insert into member values (#{memberId}, #{name}, #{password}, #{regDate})
+	</insert>
+	
+	<select id="selectById" resultMap="result">
+		select * from member where memberid = #{memberId}
+	</select>
+	
+	<select id="selectList" resultMap="result">
+		select * from member
+	</select>
+	
+	<update id="updatePwd">
+		update member set password = #{password} where memberid = #{memberId}
+	</update>
+</mapper>
